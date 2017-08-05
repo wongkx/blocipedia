@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
-  get 'welcome/index'
-
+  # devise_scope :user do
+  #   get "/sign_in" => "devise/sessions#new"
+  #   get "/sign_up" => "devise/registrations#new", as: "new_user_registration"
+  # end
+  
+  devise_for :users
+  
   get 'welcome/about'
 
   root 'welcome#index'
