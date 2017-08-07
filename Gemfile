@@ -57,10 +57,13 @@ group :development do
   gem 'jquery-rails'
   gem 'turbolinks'
   gem 'bootstrap'
-  gem 'figaro'
 end
 
 group :production do
    gem 'pg'
    gem 'rails_12factor'
 end
+
+gem 'devise'
+
+gem 'figaro', '1.0'
