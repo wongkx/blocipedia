@@ -36,11 +36,13 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
   gem 'spring'
-  gem 'rspec-rails'
+  gem 'rspec-rails', '~> 3.0'
   gem 'shoulda'
   gem 'faker'
   gem 'factory_girl_rails'
   gem 'pry-rails'
+  gem 'warden'
+  gem 'warden-rspec-rails'
 end
 
 group :development do
@@ -64,6 +66,9 @@ group :production do
    gem 'rails_12factor'
 end
 
-gem 'devise'
+gem 'devise', '~> 4.1.0'
+
+gem 'responders'
 
 gem 'figaro', '1.0'
+
