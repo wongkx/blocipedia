@@ -9,6 +9,10 @@ Rails.application.routes.draw do
   resources :wikis
   
   get 'welcome/about'
+  
+  authenticated :user do
+    root to: 'wikis#index', as: :authenticated_root
+  end
 
   root 'welcome#index'
 end

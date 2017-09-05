@@ -58,7 +58,6 @@ group :development do
   gem 'coffee-rails', '~> 4.1.0'
   gem 'jquery-rails'
   gem 'turbolinks'
-  gem 'bootstrap'
 end
 
 group :production do
@@ -71,4 +70,8 @@ gem 'devise', '~> 4.1.0'
 gem 'responders'
 
 gem 'figaro', '1.0'
+
+gem 'pundit'
+
+gem 'bootstrap-sass'
 
