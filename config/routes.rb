@@ -8,6 +8,12 @@ Rails.application.routes.draw do
   
   resources :wikis
   
+  resources :charges, only: [:new, :create]
+  
+  resources :users do
+    post :downgrade
+  end
+  
   get 'welcome/about'
   
   authenticated :user do

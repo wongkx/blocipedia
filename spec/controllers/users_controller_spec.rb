@@ -1,5 +1,4 @@
 require 'rails_helper'
-require_relative "../support/controller_macros"
 
 RSpec.describe UsersController, type: :controller do
     # let(:new_user_attributes) do
@@ -11,19 +10,13 @@ RSpec.describe UsersController, type: :controller do
     #     }
     # end
     
-    describe "GET new" do
-      login_admin
-
-      it "should have a current_user" do
-        # note the fact that you should remove the "validate_session" parameter if this was a scaffold-generated controller
-        expect(subject.current_user).to_not eq(nil)
-      end
     
-      it "should get index" do
-        # Note, rails 3.x scaffolding may add lines like get :index, {}, valid_session
-        # the valid_session overrides the devise login. Remove the valid_session from your specs
-        get 'index'
-        response.should be_success
+    describe "POST downgrade" do
+      let(:my_user) { User.create!(email:'test@blocipedia.com', password: 'password', role: 'premium') }
+      
+      it "should downgrade to standard" do
+        post :downgrade, id: my_user.id
+        expect(my_user.role).to eq('standard')
       end
     end
 end

@@ -19,6 +19,19 @@ class UsersController < ApplicationController
         end
     end
     
+    def downgrade
+        @user = User.find(params[:user_id])
+        @user.role = "standard"
+        
+        if @user.save
+            flash[:notice] = "You have been downgraded, #{@user.email}"
+            redirect_to root_path
+        else
+            flash.now[:alert] = "There was an error downgrading your profile. Please try again."
+            render :new
+        end
+    end
+        
     # def show
     #     @user = User.find(params[:id])
     # end

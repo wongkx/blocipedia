@@ -75,3 +75,5 @@ gem 'pundit'
 
 gem 'bootstrap-sass'
 
+gem 'stripe'
+
