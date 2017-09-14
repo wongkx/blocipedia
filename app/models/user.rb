@@ -7,5 +7,12 @@ class User < ActiveRecord::Base
   
   after_initialize { self.role ||= :standard }
   
-  enum role: [:standard, :premium, :admin]
+  after_commit :assign_customer_id, on: :create
+  
+  enum role: { standard: 0, premium: 1, admin: 2 }
+  
+  def assign_customer_id
+    customer = Stripe::Customer.create(email: email)
+    self.customer_id = customer.id
+  end
 end
