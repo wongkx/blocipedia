@@ -22,6 +22,8 @@ class UsersController < ApplicationController
     def downgrade
         @user = User.find(params[:user_id])
         @user.role = "standard"
+        @user.make_wikis_public
+        
         
         if @user.save
             flash[:notice] = "You have been downgraded, #{@user.email}"

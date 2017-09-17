@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   resources :charges, only: [:new, :create]
   
   resources :users do
-    post :downgrade
+    post '/downgrade' => 'users#downgrade', as: :downgrade
   end
   
   get 'welcome/about'

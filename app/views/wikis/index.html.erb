@@ -3,7 +3,9 @@
    <div class="media">
      <div class="media-body">
        <h4 class="media-heading">
-         <%= link_to wiki.title, wiki %>
+         <div class="<%= 'hide' if (current_user.standard? && wiki.private?) %>">
+          <%= link_to wiki.title, wiki %>
+         </div>
        </h4>
      </div>
    </div>

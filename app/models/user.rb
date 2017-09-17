@@ -15,4 +15,12 @@ class User < ActiveRecord::Base
     customer = Stripe::Customer.create(email: email)
     self.customer_id = customer.id
   end
+  
+  def make_wikis_public
+    puts "This user's ID is: #{self.id}"
+    @wikis = Wiki.where(user_id: self.id).all
+    @wikis.each do |wiki|
+      wiki.update_attribute(:private, false)
+    end
+  end
 end
