@@ -77,3 +77,4 @@ gem 'bootstrap-sass'
 
 gem 'stripe'
 
+gem 'redcarpet'
