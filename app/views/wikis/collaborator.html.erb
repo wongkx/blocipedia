@@ -1,0 +1,7 @@
+<h1>Add Collaborator!</h1>
+
+<%= form_tag wiki_add_path do %>
+    <label for="user_email">Enter user email</label>
+    <%= text_field_tag :user_email %>
+    <%= submit_tag("Submit") %>
+<% end %>
