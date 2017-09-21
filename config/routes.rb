@@ -6,7 +6,12 @@ Rails.application.routes.draw do
   
   devise_for :users
   
-  resources :wikis
+  resources :wikis do
+    get '/collaborator' => 'wikis#collaborator'
+    post '/add' => 'wikis#add', as: :add
+    get '/collaborator_remove' => 'wikis#collaborator_remove'
+    delete '/remove' => 'wikis#remove', as: :remove
+  end
   
   resources :charges, only: [:new, :create]
   

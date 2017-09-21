@@ -1,0 +1,7 @@
+<h1>Remove Collaborator!</h1>
+
+<%= form_tag wiki_remove_path, :method => 'delete' do %>
+    <label for="user_email">Enter user email</label>
+    <%= text_field_tag :user_email %>
+    <%= submit_tag("Submit") %>
+<% end %>

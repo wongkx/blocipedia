@@ -3,7 +3,8 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable
-  has_many :wikis, dependent: :destroy
+  has_many :collaborators
+  has_many :wikis, through: :collaborators, dependent: :destroy
   
   after_initialize { self.role ||= :standard }
   
@@ -17,7 +18,6 @@ class User < ActiveRecord::Base
   end
   
   def make_wikis_public
-    puts "This user's ID is: #{self.id}"
     @wikis = Wiki.where(user_id: self.id).all
     @wikis.each do |wiki|
       wiki.update_attribute(:private, false)
